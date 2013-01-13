@@ -18,4 +18,20 @@ div.container {
     border:                 1px solid black;
 }
 
+header {
+    background-color:       #CCCCCC;
+}
 
+footer {
+    background-color:       #F0F0F0;
+}
+
+nav { 
+    background-color:       black;
+    color:             white;
+
+}
+
+div.side-element {
+    background-color:       #F0F0FF;
+}
