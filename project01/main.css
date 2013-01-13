@@ -1,8 +1,11 @@
 /* main.css */
-
+@import url('reset.css');
 
 body {
     background-color:       #AAAAAA;
+    padding:                0px;
+    border:                 none;
+    margin:                 0px;
 }
 
 /* 
@@ -16,10 +19,17 @@ div.container {
     margin-right:           auto;
     background-color:       white;
     border:                 1px solid black;
+
 }
 
 header {
     background-color:       #CCCCCC;
+    padding:                10px;
+    border:                 none;
+}
+
+header h4 {
+    color:                  #666666;
 }
 
 footer {
@@ -28,10 +38,19 @@ footer {
 
 nav { 
     background-color:       black;
-    color:             white;
+    color:                  white;
+    padding:                10px;
 
+}
+
+nav li {
+    list-style-type:        none;
+    display:                inline;
+    padding:                15px;
 }
 
 div.side-element {
     background-color:       #F0F0FF;
 }
+
+
