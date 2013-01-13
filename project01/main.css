@@ -19,7 +19,10 @@ div.container {
     margin-right:           auto;
     background-color:       white;
     border:                 1px solid black;
+}
 
+div.body {
+    padding:                10px;
 }
 
 header {
@@ -51,6 +54,7 @@ nav li {
 
 div.side-element {
     background-color:       #F0F0FF;
+    float:                  right;
 }
 
 
