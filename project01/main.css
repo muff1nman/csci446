@@ -1,5 +1,21 @@
 /* main.css */
 
+
 body {
     background-color:       #AAAAAA;
 }
+
+/* 
+ * Force size to be 1000 px
+ * Black border 
+ * Centered
+ */
+div.container {
+    width:                  1000px;
+    margin-left:            auto;
+    margin-right:           auto;
+    background-color:       white;
+    border:                 1px solid black;
+}
+
+
