@@ -59,6 +59,16 @@ nav li {
     padding:                15px;
 }
 
+nav a:link,a:visited,a:active {
+    text-decoration:        none;
+    color:                  white;
+}
+
+nav a:hover {
+    text-decoration:        none;
+    color:                  #C0C0FF;
+}
+
 div.side-element {
     background-color:       #F0F0FF;
     float:                  right;
