@@ -7,8 +7,10 @@ class Form
         @order = Hash.new
         if File.readable?( formLocation) 
             @rawForm = File.open( formLocation, "r" ) { |f| f.read }
-            @erb = ERB.new( @rawForm )
+        else
+            @rawForm = "<html>Form Error!</html>"
         end
+        @erb = ERB.new( @rawForm )
     end
 
     def newOrder( value, display )
@@ -19,13 +21,17 @@ class Form
         @rank[value] = display
     end
 
-    def create()
-        @erb.result()
+    def render()
+        @erb.result( get_binding )
+    end
+
+    def get_binding()
+        binding()
     end
 
 end
 
-class HelloWorld
+class WebApp
   def call(env)
       request = Rack::Request.new( env )
       case request.path
@@ -39,7 +45,9 @@ class HelloWorld
   def do_form( request )
       response = Rack::Response.new
       form = Form.new( "form.html" )
-      response.write ( form.create )
+      ["Rank", "Name", "Year" ].each { |order| form.newOrder( order, order ) }
+      (1..100).each { |rank| form.newRank( rank, rank ) }
+      response.write ( form.render )
       response.finish
   end
 
@@ -53,4 +61,4 @@ class HelloWorld
 
 end
 
-Rack::Handler::WEBrick.run HelloWorld.new, :Port => 64738
+Rack::Handler::WEBrick.run WebApp.new, :Port => 64738
