@@ -7,7 +7,13 @@
         <p>Sorted by</p>
 
         <table>
-        
+            <% @albums.each do |album| %>
+            <tr>
+                <td><%= album.rank %></td>
+                <td><%= album.title %></td>
+                <td><%= album.year %></td>
+            </tr>
+            <% end %>
         </table>
     </body>
 </html>

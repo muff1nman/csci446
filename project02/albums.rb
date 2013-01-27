@@ -1,5 +1,6 @@
 require 'rack'
 require_relative 'form'
+require_relative 'list'
 
 class WebApp
   def call(env)
@@ -15,14 +16,21 @@ class WebApp
   def do_form( request )
       response = Rack::Response.new
       form = Form.new( "form.html" )
-      ["Rank", "Name", "Year" ].each { |order| form.newOrder( order, order ) }
+      form.newOrder( "rank", "Rank (Default)" )
+      form.newOrder( "title", "Name" )
+      form.newOrder( "year", "Year" )
       (1..100).each { |rank| form.newRank( rank, rank ) }
       response.write ( form.render )
       response.finish
   end
 
   def do_list( request )
-      [ 200, {"Content-Type" => "text/plain" }, ["Do list" ]]
+      response = Rack::Response.new
+      template = ERB.new( File.open("list.html","r") { |f| f.read } )
+      rockAlbums = List.new( "top_100_albums.txt" )
+      @albums = rockAlbums.albums.sort { |alb1, alb2| alb1.send(request["order"]) <=> alb2.send( request["order"]) }
+      response.write( template.result(binding) )
+      response.finish
   end
 
   def do_bad_request( )
