@@ -23,4 +23,4 @@ class List
 end
 
 #rock = List.new( "top_100_albums.txt" )
-#rock.albums.each { |album| puts "Album: #{album.title} \nYear: #{album.year}\nRank: #{album.rank} \n\n" }
+#rock.albums.each { |album| puts "Album: #{album.name} \nYear: #{album.year}\nRank: #{album.rank} \n\n" }

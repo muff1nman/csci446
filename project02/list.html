@@ -4,7 +4,7 @@
     </head>
     <body>
         <h1>Rolling Stone's Top 100 Albumns of All Time</h1>
-        <p>Sorted by</p>
+        <p>Sorted by <%= @sort_by.capitalize %></p>
 
         <table>
             <% @albums.each do |album| %>
@@ -14,7 +14,7 @@
             <tr>
             <% end %>
                 <td><%= album.rank %></td>
-                <td><%= album.title %></td>
+                <td><%= album.name %></td>
                 <td><%= album.year %></td>
             </tr>
             <% end %>

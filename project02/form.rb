@@ -28,4 +28,6 @@ class Form
         binding()
     end
 
+    attr_accessor( :defaultOrder )
+
 end

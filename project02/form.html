@@ -8,7 +8,7 @@
             <label for="order">Sort By</label>
             <select name="order">
                 <% @order.each do |value, display| %>
-                <option value="<%= value %>"><%= display %></option> 
+                <option value="<%= value %>"><%= display %><%= ' (Default)' if value == @defaultOrder %></option> 
                 <% end %>
             </select>
             <label for"rank">Select a Rank to Highlight</label>
