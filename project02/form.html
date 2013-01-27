@@ -13,7 +13,9 @@
             </select>
             <label for"rank">Select a Rank to Highlight</label>
             <select name="rank">
-                <option value="1">1</option>
+                <% @rank.each do |value, display| %>
+                <option value="<%= value %>"><%= display %></option> 
+                <% end %>
             </select>
             <input type="submit" value="Display List">
         </form>
