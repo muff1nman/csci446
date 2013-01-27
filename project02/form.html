@@ -7,14 +7,13 @@
         <form action="/list" method="GET">
             <label for="order">Sort By</label>
             <select name="order">
-                <option value="rank">Rank (default)</option>
-                <option value="name">Name</option>
-                <option value="year">Year</option>
+                <% @order.each do |value, display| %>
+                <option value="<%= value %>"><%= display %></option> 
+                <% end %>
             </select>
             <label for"rank">Select a Rank to Highlight</label>
             <select name="rank">
                 <option value="1">1</option>
-                <option value="2">2</option>
             </select>
             <input type="submit" value="Display List">
         </form>
