@@ -8,7 +8,11 @@
 
         <table>
             <% @albums.each do |album| %>
+            <% if @highlight == album.rank %>
+            <tr class="highlight">
+            <% else %>
             <tr>
+            <% end %>
                 <td><%= album.rank %></td>
                 <td><%= album.title %></td>
                 <td><%= album.year %></td>

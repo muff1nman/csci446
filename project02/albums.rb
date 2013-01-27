@@ -29,6 +29,7 @@ class WebApp
       template = ERB.new( File.open("list.html","r") { |f| f.read } )
       rockAlbums = List.new( "top_100_albums.txt" )
       @albums = rockAlbums.albums.sort { |alb1, alb2| alb1.send(request["order"]) <=> alb2.send( request["order"]) }
+      @highlight = request["rank"].to_i
       response.write( template.result(binding) )
       response.finish
   end
