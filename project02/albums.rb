@@ -1,4 +1,29 @@
 require 'rack'
+require 'erb'
+
+class Form
+    def initialize( formLocation )
+        @rank = Hash.new
+        @order = Hash.new
+        if File.readable?( formLocation) 
+            @rawForm = File.open( formLocation, "r" ) { |f| f.read }
+            @erb = ERB.new( @rawForm )
+        end
+    end
+
+    def newOrder( value, display )
+        @order[value] = display
+    end
+
+    def newRank( value, display )
+        @rank[value] = display
+    end
+
+    def create()
+        @erb.result()
+    end
+
+end
 
 class HelloWorld
   def call(env)
@@ -12,7 +37,10 @@ class HelloWorld
   end
 
   def do_form( request )
-      [ 200, {"Content-Type" => "text/plain" }, ["Do form" ]]
+      response = Rack::Response.new
+      form = Form.new( "form.html" )
+      response.write ( form.create )
+      response.finish
   end
 
   def do_list( request )
