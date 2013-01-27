@@ -2,14 +2,25 @@ require 'rack'
 
 class HelloWorld
   def call(env)
-      puts " path: #{env["PATH_INFO"]}"
-      puts " script: #{env["SCRIPT_NAME"]}"
-      doGet( env ) if env["REQUEST_METHOD"] == "GET"
+      request = Rack::Request.new( env )
+      case request.path
+      when "/form" then do_form( request )
+      when "/list" then do_form( request )
+      else do_bad_request
   end
 
-  def doGet( env )
-      [200, {"Content-Type" => "text/plain"}, ["Hi"]]
+  def do_form( request )
+
   end
+
+  def do_list( request )
+
+  end
+
+  def do_bad_request( request )
+
+  end
+
 end
 
 Rack::Handler::WEBrick.run HelloWorld.new, :Port => 64738
