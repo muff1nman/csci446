@@ -1,4 +1,67 @@
 /* Main.css */
 /* Andrew DeMaria */
 
+body {
+    font-family:        sans-serif;
+}
 
+label {
+    display:            inline;
+}
+
+h1 {
+    text-align:         center;
+}
+
+select { 
+    display:            block;
+}
+
+form {
+    padding:            2px;
+    height:             70px;
+    min-width:          400px;
+    width:              50%;
+    margin-left:        auto;
+    margin-right:       auto;
+}
+
+form div {
+    float:              left;
+    text-align:         center;
+    position:           relative;
+
+}
+
+form div select {
+    margin-left:        auto;
+    margin-right:       auto;
+}
+
+div.order {
+    width:              25%;
+}
+
+div.rank {
+    width:              45%;
+}
+
+div.rank select {
+    width:              100%;
+}
+
+div.submit {
+    width:              30%;
+}
+
+form input {
+    height:             2em;
+}
+
+table td {
+    padding:            5px;
+}
+
+table tr.highlight {
+    text-color:         green;
+}
