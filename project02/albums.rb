@@ -53,7 +53,7 @@ class WebApp
   end
 
   def do_css( request )
-      response = Rack::Response.new
+      response = Rack::Response.new( [], 200, {"Content-Type" => "text/css" } )
       response.write( File.open(@@cssFile, "r") { |f| f.read } )
       response.finish
   end

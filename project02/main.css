@@ -58,10 +58,16 @@ form input {
     height:             2em;
 }
 
+table, tr, td {
+    border:             none;
+}
+
 table td {
     padding:            5px;
 }
 
 table tr.highlight {
-    color:         green;
+    color:              green;
+    background-color:   #dadce0;
+
 }
