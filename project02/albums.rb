@@ -3,12 +3,16 @@ require_relative 'form'
 require_relative 'list'
 
 class WebApp
+
+  @@cssFile = 'main.css'
+
   def call(env)
       request = Rack::Request.new( env )
       generateForm
       case request.path
       when "/form" then do_form( request )
       when "/list" then do_list( request )
+      when "/#{@@cssFile}" then do_css( request )
       else do_bad_request 
       end
 
@@ -45,6 +49,12 @@ class WebApp
       @albums = rockAlbums.albums.sort { |alb1, alb2| alb1.send(@sort_by.to_sym) <=> alb2.send(@sort_by.to_sym ) }
       @highlight = request["rank"].to_i
       response.write( template.result(binding) )
+      response.finish
+  end
+
+  def do_css( request )
+      response = Rack::Response.new
+      response.write( File.open(@@cssFile, "r") { |f| f.read } )
       response.finish
   end
 
