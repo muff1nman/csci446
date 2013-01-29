@@ -39,11 +39,11 @@ form div select {
 }
 
 div.order {
-    width:              25%;
+    width:              35%;
 }
 
 div.rank {
-    width:              45%;
+    width:              40%;
 }
 
 div.rank select {
@@ -51,7 +51,7 @@ div.rank select {
 }
 
 div.submit {
-    width:              30%;
+    width:              25%;
 }
 
 form input {
