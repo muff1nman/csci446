@@ -24,13 +24,15 @@ class List
 
     def importDatabase( filename )
         SQLite3::Database.open( filename ) do |db|
+#            db.execute( "select * from albums" ) do |row|
+#                @albums << Album.new( row['title'],  row['year'], row['rank'] )
+#            end
             db.results_as_hash = true
             stmt_select_all = db.prepare( "SELECT * from albums;")
+            columns = stmt_select_all.columns
             stmt_select_all.execute
             stmt_select_all.each do |row|
-                #@albums << Album.new( row['rank'], row['title'], row['year'] )
-                #puts "rank: #{row['rank']}"
-                puts "rank: #{row[1]}"
+                @albums << Album.new( row[columns.index('title')],  row[columns.index('year')], row[columns.index('rank')] )
             end
         end
         rescue SQLite3::Exception => e
