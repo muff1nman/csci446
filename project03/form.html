@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Top 100 Albums of All Time</title>
+        <link href="main.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <h1>Rolling Stone's Top 100 Albums of All Time</h1>
+        <form action="/list" method="GET">
+            <div class="order" >
+                <label for="order">Sort By</label>
+                <select name="order">
+                    <% @order.each do |value, display| %>
+                    <option value="<%= value %>"><%= display %><%= " (Default)" if value == @defaultOrder %></option> 
+                    <% end %>
+                </select>
+            </div>
+            <div class="rank" >
+                <label for"rank">Select a Rank to Highlight</label>
+                <select name="rank">
+                    <% @rank.each do |value, display| %>
+                    <option value="<%= value %>"><%= display %></option> 
+                    <% end %>
+                </select>
+            </div>
+            <div class="submit" >
+                <input type="submit" value="Display List">
+            </div>
+        </form>
+    </body>
+</html>
