@@ -18,6 +18,8 @@ class WebApp
 
   end
 
+  # to be removed later
+  # maps the html name for the sort option to the display value.
   @@sortOptions = { 
       "rank" => "Rank",
       "name" => "Name",
@@ -26,6 +28,7 @@ class WebApp
 
   def generateForm () 
       @form = Form.new( "form.html" )
+      @rockAlbums = List.new( "albums.sqlite3.db" )
       @@sortOptions.each { |key, value| @form.newOrder( key, value ) } 
       @form.defaultOrder = "rank"
       (1..100).each { |rank| @form.newRank( rank, rank ) }
@@ -40,13 +43,17 @@ class WebApp
   def do_list( request )
       response = Rack::Response.new
       template = ERB.new( File.open("list.html","r") { |f| f.read } )
-      rockAlbums = List.new( "top_100_albums.txt" )
       if request["order"].nil?
           @sort_by = @form.defaultOrder
       else
           @sort_by = request["order"]
       end
-      @albums = rockAlbums.albums.sort { |alb1, alb2| alb1.send(@sort_by.to_sym) <=> alb2.send(@sort_by.to_sym ) }
+
+      # small test to ensure a function doesn't get passed to albums we don't
+      # expect
+      do_bad_request unless @@sortOptions.has_key? @sort_by
+
+      @albums = @rockAlbums.albums.sort { |alb1, alb2| alb1.send(@sort_by.to_sym) <=> alb2.send(@sort_by.to_sym ) }
       @highlight = request["rank"].to_i
       response.write( template.result(binding) )
       response.finish

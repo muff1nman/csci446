@@ -28,7 +28,9 @@ class List
             stmt_select_all = db.prepare( "SELECT * from albums;")
             stmt_select_all.execute
             stmt_select_all.each do |row|
-                @albums << Album.new( row['title'], row['year'], row['rank'] )
+                #@albums << Album.new( row['rank'], row['title'], row['year'] )
+                #puts "rank: #{row['rank']}"
+                puts "rank: #{row[1]}"
             end
         end
         rescue SQLite3::Exception => e
