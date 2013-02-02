@@ -1,4 +1,3 @@
-
 class Album
     @@rank = 1
     def initialize(name, year, rank=@@rank)
