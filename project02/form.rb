@@ -1,6 +1,8 @@
 require 'erb'
 
 class Form
+    attr_accessor :defaultOrder 
+
     def initialize( formLocation )
         @rank = Hash.new
         @order = Hash.new
@@ -28,6 +30,5 @@ class Form
         binding()
     end
 
-    attr_accessor( :defaultOrder )
 
 end

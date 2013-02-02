@@ -1,6 +1,8 @@
 require_relative 'album'
 
 class List
+    attr_reader :albums
+
     def initialize(filename)
         @albums = []
         importFile( filename )
@@ -17,8 +19,6 @@ class List
             end
         end
     end
-
-    attr_reader( :albums )
 
 end
 
