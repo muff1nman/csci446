@@ -27,7 +27,7 @@ class Form
     end
 
     def get_binding()
-        binding()
+        binding
     end
 
 
