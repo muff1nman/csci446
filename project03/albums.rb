@@ -64,4 +64,5 @@ class WebApp
 
 end
 
+Signal.trap('INT') { Rack::Handler::WEBrick.shutdown }
 Rack::Handler::WEBrick.run WebApp.new, :Port => 64738
