@@ -29,10 +29,8 @@ class List
 #            end
             db.results_as_hash = true
             db.prepare( "SELECT * from albums;") do |stmt_select_all|
-                columns = stmt_select_all.columns
-                stmt_select_all.execute
-                stmt_select_all.each do |row|
-                    @albums << Album.new( row[columns.index('title')],  row[columns.index('year')], row[columns.index('rank')] )
+                stmt_select_all.execute.each do |row|
+                    @albums << Album.new( row['title'],  row['year'], row['rank'] )
                 end
             end
         end
