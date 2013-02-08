@@ -3,7 +3,6 @@ require 'data_mapper'
 require_relative 'album'
 
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/albums.sqlite3.db" )
-
 set :port, 8080
 
 get "/form" do
@@ -13,8 +12,8 @@ get "/form" do
 end
 
 post "/list" do
-    sort_by = params[:order].to_sym
-    which_rank = params[:rank]
-    erb :list, :locals => { :albums => Album.all(:order => [sort_by]), :highlight => which_rank, :sort_by => sort_by }
+    @sort_by = params[:order].to_sym
+    @highlight = params[:rank]
+    @albums = Album.all(:order => [@sort_by])
+    erb :list
 end
-
