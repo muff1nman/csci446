@@ -13,7 +13,8 @@ get "/form" do
 end
 
 post "/list" do
-    erb :list, :locals => { :albums => Album.all, :highlight => 1, :sort_by => "Rank" }
+    sort_by = params[:order].to_sym
+    erb :list, :locals => { :albums => Album.all(:order => [sort_by]), :highlight => 1, :sort_by => sort_by }
 end
 
 
