@@ -6,12 +6,9 @@ DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/albums.sqlite3.db" )
 
 set :port, 8080
 
-before do
-    @rankValues = Hash.new
-    (1..100).each { |value| @rankValues[value] = value }
-end
-
 get "/form" do
+    @rankValues ||= Hash.new
+    (1..100).each { |value| @rankValues[value] ||= value }
     erb :form, :locals => { :rank => @rankValues }
 end
 
