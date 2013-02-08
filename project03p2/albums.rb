@@ -14,7 +14,7 @@ end
 
 post "/list" do
     sort_by = params[:order].to_sym
-    erb :list, :locals => { :albums => Album.all(:order => [sort_by]), :highlight => 1, :sort_by => sort_by }
+    which_rank = params[:rank]
+    erb :list, :locals => { :albums => Album.all(:order => [sort_by]), :highlight => which_rank, :sort_by => sort_by }
 end
-
 
