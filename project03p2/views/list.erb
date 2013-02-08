@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>The List</title>
+        <link href="main.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <h1>Rolling Stone's Top 100 Albumns of All Time</h1>
+        <p>Sorted by <%= @sort_by.capitalize %></p>
+
+        <table>
+            <% @albums.each do |album| %>
+            <% if @highlight == album.rank %>
+            <tr class="highlight">
+            <% else %>
+            <tr>
+            <% end %>
+                <td><%= album.rank %></td>
+                <td><%= album.name %></td>
+                <td><%= album.year %></td>
+            </tr>
+            <% end %>
+        </table>
+    </body>
+</html>
