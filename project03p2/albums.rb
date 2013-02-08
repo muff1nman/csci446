@@ -13,7 +13,7 @@ get "/form" do
 end
 
 post "/list" do
-    "Sinatra is responding"
+    erb :list, :locals => { :albums => Album.all, :highlight => 1, :sort_by => "Rank" }
 end
 
 
