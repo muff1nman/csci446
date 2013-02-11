@@ -1,21 +1,21 @@
-        <form action="/list" method="POST">
-            <div class="order" >
-                <label for="order">Sort By</label>
-                <select name="order">
-                    <option value="rank">Rank (Default)</option>
-                    <option value="title">Title</option>
-                    <option value="year">Year</option>
-                </select>
-            </div>
-            <div class="rank" >
-                <label for"rank">Select a Rank to Highlight</label>
-                <select name="rank">
-                    <% rank.each do |value, display| %>
-                    <option value="<%= value %>"><%= display %></option> 
-                    <% end %>
-                </select>
-            </div>
-            <div class="submit" >
-                <input type="submit" value="Display List">
-            </div>
-        </form>
+<form action="/list" method="POST" class="row" >
+    <div class="order span4" >
+        <label for="order">Sort By</label>
+        <select name="order">
+            <option value="rank">Rank (Default)</option>
+            <option value="title">Title</option>
+            <option value="year">Year</option>
+        </select>
+    </div>
+    <div class="rank span4" >
+        <label for"rank">Select a Rank to Highlight</label>
+        <select name="rank">
+            <% rank.each do |value, display| %>
+                <option value="<%= value %>"><%= display %></option> 
+        <% end %>
+        </select>
+    </div>
+    <div class="submit span4" >
+        <button class="btn" type="submit" >Display List</button>
+    </div>
+</form>

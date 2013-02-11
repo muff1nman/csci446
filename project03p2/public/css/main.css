@@ -4,5 +4,12 @@
 table tr.highlight {
     color:              green;
     background-color:   #dadce0;
+}
 
+table td {
+    padding:            5px;
+}
+
+.yield {
+    margin-top:             5px;
 }

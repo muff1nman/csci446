@@ -1,15 +1,14 @@
-        <p>Sorted by <%= @sort_by.capitalize %></p>
-
-        <table>
-            <% @albums.each do |album| %>
-            <% if @highlight.to_i == album.rank.to_i %>
-            <tr class="highlight">
-            <% else %>
+<p class="lead" >Sorted by <%= @sort_by.capitalize %></p>
+<table class="table">
+    <% @albums.each do |album| %>
+        <% if @highlight.to_i == album.rank.to_i %>
+        <tr class="highlight">
+    <% else %>
             <tr>
-            <% end %>
-                <td><%= album.rank %></td>
-                <td><%= album.title %></td>
-                <td><%= album.year %></td>
-            </tr>
-            <% end %>
-        </table>
+        <% end %>
+            <td><%= album.rank %></td>
+            <td><%= album.title %></td>
+            <td><%= album.year %></td>
+        </tr>
+    <% end %>
+</table>
