@@ -43,3 +43,12 @@ Product.create(title: 'Rails Test Prescriptions',
       </p>},
   image_url: 'rtp.jpg',
   price: 34.95)
+
+Product.create(:title => 'I need a new phone',
+               :description => 
+%{ <p>My droid x2 is nice and all, but man its really on its last leg. The
+battery sucks and I wish I had <strong>Android 4</strong>.  I mean I don't even
+have ASLR on my phone!</p>}, 
+               :image_url => 'http://images.nymag.com/news/features/spectrum121029_560.jpg',
+               :price => '299.99')
+
