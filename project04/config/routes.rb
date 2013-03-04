@@ -5,6 +5,6 @@ Depot::Application.routes.draw do
 
   # makes the '/' path go to /store/index and lets us easily access this with
   # store_path()
-  root to: 'store#index', as 'store' 
+  root to: 'store#index', as: 'store' 
 
 end
