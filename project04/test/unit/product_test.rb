@@ -59,4 +59,23 @@ class ProductTest < ActiveSupport::TestCase
         assert !product.save
         assert_equal "has already been taken", product.errors[:title].join('; ')
     end
+
+    test "product title length minumum of 10" do
+        product = Product.new(
+                              description: products(:ruby).description,
+                              price: products(:ruby).price,
+                              image_url: products(:ruby).image_url)
+
+        product.title = "TooLittle"
+        assert product.invalid?
+        assert_equal "is too short (minimum is 10 characters)",
+           product.errors[:title].join('; ')
+
+        product.title = "Just_Right"
+        assert product.valid?
+
+        product.title = "WayOverboardherebutthatsokwithme"
+        assert product.valid?
+
+    end
 end
