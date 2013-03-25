@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
       cart
   end
 
+  def reset_counter
+      session[:counter] = 0 if !(session[:counter].nil?)
+  end
+
 end

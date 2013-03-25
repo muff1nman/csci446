@@ -24,6 +24,7 @@ class LineItemsController < ApplicationController
   # GET /line_items/new
   # GET /line_items/new.json
   def new
+    reset_counter
     @line_item = LineItem.new
 
     respond_to do |format|
@@ -43,6 +44,7 @@ class LineItemsController < ApplicationController
     @cart = current_cart
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product( product.id )
+    reset_counter
 
     respond_to do |format|
       if @line_item.save
@@ -59,6 +61,7 @@ class LineItemsController < ApplicationController
   # PUT /line_items/1.json
   def update
     @line_item = LineItem.find(params[:id])
+    reset_counter
 
     respond_to do |format|
       if @line_item.update_attributes(params[:line_item])
@@ -76,6 +79,7 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item = LineItem.find(params[:id])
     @line_item.destroy
+    reset_counter
 
     respond_to do |format|
       format.html { redirect_to line_items_url }
