@@ -4,6 +4,8 @@
 
 <h1>Your Pragmatic Catalog</h1>
 
+<p><%= pluralize(@counter,"visit") %></p>
+
 <% @products.each do |product| %>
     <div class="entry">
         <%= image_tag(product.image_url) %>
